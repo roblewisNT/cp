@@ -1,0 +1,238 @@
+{
+  "name": "Foundry",
+  "version": "1.3.1",
+  "images": [
+    {
+      "variable": "header_logo",
+      "label": "Header logo",
+      "description": "Good for a logo up to 200 x 50 pixels"
+    },
+    {
+      "variable": "welcome_image",
+      "label": "Welcome image",
+      "description": "Displays a full screen image on the Home page"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "primary_font",
+      "label": "Primary Font",
+      "default": "Work Sans"
+    },
+    {
+      "variable": "secondary_font",
+      "label": "Secondary Font",
+      "default": "Work Sans"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "header_background_color",
+      "label": "Header & button background",
+      "default": "#222222"
+    },
+    {
+      "variable": "header_text_color",
+      "label": "Header & button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "home_image_overlay_color",
+      "label": "Home overlay background color",
+      "default": "#222222"
+    },
+    {
+      "variable": "home_image_text_color",
+      "label": "Home overlay text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "primary_text_color",
+      "label": "Primary text",
+      "default": "#222222"
+    },
+    {
+      "variable": "secondary_text_color",
+      "label": "Secondary text",
+      "default": "#646464"
+    },
+    {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#999999"
+    },
+    {
+      "variable": "error_text_color",
+      "label": "Errors",
+      "default": "#CF3636"
+    },
+    {
+      "variable": "footer_background_color",
+      "label": "Footer background",
+      "default": "#F9F9F9"
+    },
+    {
+      "variable": "footer_icon_color",
+      "label": "Footer icons",
+      "default": "#222222"
+    },
+    {
+      "variable": "footer_text_color",
+      "label": "Footer text",
+      "default": "#646464"
+    }
+  ],
+  "options": [
+    {
+      "variable": "welcome_text",
+      "label": "Welcome text",
+      "type": "text",
+      "description": "Home page message for your visitors, use this with a welcome image"
+    },
+    {
+      "variable": "home_tagline",
+      "label": "Home page tagline",
+      "type": "text",
+      "description": "Home page tagline"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": false,
+      "description": "Displays a product search icon in the header"
+    },
+    {
+      "variable": "show_overlay",
+      "label": "Product list info",
+      "type": "select",
+      "options": ["On rollover", "Under image"],
+      "default": "Under image",
+      "description": "Shows a product's name & price on hover, or under the image"
+    },
+    {
+      "variable": "featured_categories",
+      "label": "Featured categories",
+      "type": "select",
+      "options": ["0","2","3","4","5","6","7","8","9","10"],
+      "default": "0",
+      "description": "The number of featured categories on the Home page"
+    },
+    {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 8,
+      "description": "The number of featured products on the Home page"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 24,
+      "description": "The number of products displayed per page"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "Twitter URL",
+      "type": "text",
+      "description": "Ex: http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "facebook_url",
+      "label": "Facebook URL",
+      "type": "text",
+      "description": "Ex: http://facebook.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
+    }
+  ],
+  "checkout": {
+    "header_image": "{{ header_logo }}",
+    "header_image_max_width": "200px",
+    "header_image_max_height": "50px",
+    "title_font": "{{ primary_font }}",
+    "title_font_weight": "normal",
+    "title_font_size": "22px",
+    "title_color": "{{ header_text_color }}",
+    "title_background_color": "{{ header_background_color }}",
+    "title_vertical_padding": "27px",
+    "background_color": "{{ header_background_color }}",
+    "body_font": "{{ secondary_font }}",
+    "body_font_size": "14px",
+    "step_border_color": "{{ border_color }}",
+    "step_header_color": "{{ primary_color }}",
+    "step_border_width": "2px",
+    "step_border_style": "solid",
+    "step_border_radius": "0px",
+    "step_inactive_header_color": " {{ primary_text_color }}",
+    "step_header_font": "{{ primary_font }}",
+    "step_background_color": "{{ background_color }}",
+    "content_banded": "true",
+    "content_background_color": "{{ background_color }}",
+    "content_header_background_color": "{{ background_color }}",
+    "content_header_color": "{{ primary_text_color }}",
+    "content_color": "{{ primary_text_color }}",
+    "content_header_font_size": "18px",
+    "content_border_color": "transparent", 
+    "content_border_radius": "0px",
+    "error_background_color": "#ea4859",
+    "error_color": "#ffffff",
+    "error_border_radius": "0",
+    "error_border_color": "#ea4859",
+    "input_focus_color": "#000000",
+    "input_focus_background_color": "#ffffff",
+    "input_focus_border_color": "#bfbfbf",
+    "input_error_border_color": "#ea4859",
+    "input_color": "#000000",
+    "input_error_color": "#000000",
+    "input_border_color": "#bfbfbf",
+    "input_background_color": "#ffffff",
+    "input_error_background_color": "#ffffff",
+    "input_border_radius": "0px",
+    "input_border_width": "2px",
+    "input_font": "{{ secondary_font }}",
+    "button_color": "{{ header_text_color }}",
+    "button_border_width": "0px",
+    "button_border_radius": "0px",
+    "button_font": "{{ secondary_font }}",
+    "button_hover_color": "{{ header_text_color }}",
+    "button_background_color": "{{ header_background_color }}",
+    "button_hover_background_color": "{{ header_background_color }}",
+    "button_border_color": "{{ button_color }}",
+    "button_hover_border_color": "{{ button_color }}",
+    "button_text_transform": "none",
+    "link_color": "{{ secondary_text_color }}",
+    "link_hover_color": "{{ secondary_text_color }}",
+    "step_header_color": "{{ primary_text_color }}",
+    "step_header_font_size": "18px",
+    "summary_color": "{{ primary_text_color }}",
+    "summary_secondary_color": "{{ secondary_text_color }}",
+    "summary_submit_background_color": "{{ background_color }}",
+    "summary_item_border_color": "{{ border_color }}",
+    "summary_item_list_border_color": "{{ border_color }}"
+  }
+}

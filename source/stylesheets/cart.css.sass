@@ -1,0 +1,508 @@
+@import 'config'
+
+#cart .cart_holder
+  display: none
+  
+#cart footer
+  padding-bottom: 60px
+
+.cart_form
+  +pie-clearfix
+  margin: 0 auto
+  max-width: 1200px
+  
+  .errors
+    margin: 0 auto 40px auto
+    max-width: 540px
+    width: 100%
+    
+.cart_items
+  float: left
+  max-width: 60%
+  width: 100%
+  
+  @media screen and (max-width: $break-extra-large)
+    max-width: 65%
+    
+  @media screen and (max-width: $break-large)
+    max-width: 60%
+    
+  @media screen and (max-width: $break-small)
+    float: none
+    max-width: 100%
+  
+  li
+    +pie-clearfix
+    font-size: 14px
+    line-height: 15px
+    padding-bottom: 40px
+    
+    a.item_image
+      float: left
+      height: 100%
+      max-width: 40%
+      text-align: center
+      width: 100%
+      
+      @media screen and (max-width: $break-medium)
+        max-width: 35%
+      
+      img
+        display: block
+        height: auto
+        margin: 0 auto
+        width: 100%
+      
+    .item_details
+      font-family: $primary-font  
+      float: left
+      max-width: 500px
+      padding: 0 40px
+      width: auto
+      
+      @media screen and (max-width: $break-large)
+        padding-left: 20px
+        
+      @media screen and (max-width: $break-small)
+        padding-right: 0
+
+      a
+        color: $primary-text-color
+        display: block
+        font-size: 26px
+        line-height: 36px
+        
+        @media screen and (max-width: $break-large)
+          font-size: 18px
+          line-height: 26px
+      
+        > span
+          color: $secondary-text-color
+          display: block
+          font-family: $secondary-font
+          font-size: 18px
+          line-height: 26px
+          margin-top: 6px
+          
+          @media screen and (max-width: $break-large)
+            font-size: 14px
+            line-height: 22px
+            
+    .qty_holder
+      +pie-clearfix
+      margin-top: 20px
+      
+      button
+        +border-radius(3ex)
+        +transform(translateZ(0px))
+        background: none
+        border: 2px solid $border-color
+        color: $secondary-text-color
+        float: left
+        height: 40px
+        line-height: normal
+        width: 40px
+        
+        @media screen and (max-width: $break-small)
+          height: 36px
+          width: 36px
+        
+        svg
+          fill: $secondary-text-color
+          height: 20px
+          position: relative
+          top: 2px
+          width: 20px
+          
+          @media screen and (max-width: $break-small)
+            height: 18px
+            width: 18px
+        
+      input
+        +appearance(none)
+        background: none
+        border: none
+        color: $secondary-text-color
+        float: left
+        font-size: 15px
+        height: 40px
+        text-align: center
+        width: 60px
+        
+        @media screen and (max-width: $break-small)
+          font-size: 14px
+          height: 36px
+          width: 56px
+        
+        &:focus
+          box-shadow: none
+          outline: none
+          
+.flexbox .cart_items li
+  +flexbox
+  +align-items(center)
+    
+.cart_info
+  border: 2px solid $border-color
+  color: $secondary-text-color
+  float: right
+  max-width: 30%
+  padding: 45px 40px 20px 40px
+  /* position: -webkit-sticky */
+  /* position: sticky */
+  text-align: center
+  top: 110px
+  width: 100%
+  
+  @media screen and (max-width: $break-extra-large)
+    max-width: 35%
+  
+  @media screen and (max-width: $break-large)
+    max-width: 40%
+    padding: 40px 35px 25px 35px
+  
+  @media screen and (max-width: $break-small)
+    border: none
+    float: none
+    max-width: 100%
+    padding: 40px 0 0
+  
+  h3, h4
+    margin-bottom: 20px
+    text-align: left
+    
+    >span
+      float: right
+  h3
+    color: $primary-text-color
+    font-size: 26px
+    
+    @media screen and (max-width: $break-medium)
+      font-size: 18px
+      
+    @media screen and (max-width: $break-small)
+      font-size: 26px
+        
+  h4
+    font-size: 13px
+      
+  button, .button
+    max-width: 100%
+    
+    @media screen and (max-width: $break-medium)
+      font-size: 16px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 18px
+    
+  .continue_shopping
+    background: none
+    color: $secondary-text-color
+    font-size: 12px
+    margin-top: 20px
+    
+  .cart_shipping
+    .select
+      max-width: 100%
+      
+  .cart_discounts
+    border: 2px solid $border-color
+    font-size: 14px
+    height: 60px
+    line-height: 56px
+    margin-bottom: 40px
+    padding: 0 10px
+    text-align: left
+    
+    input
+      +appearance(none)
+      +border-radius(0)
+      background: none
+      border: none
+      color: $secondary-text-color
+      font-size: 14px
+      height: 56px
+      line-height: 56px
+      text-align: left
+      width: 240px
+      
+      &::-ms-clear
+        height: 0
+        width: 0
+      
+      &:active, &:focus
+        outline: none
+        
+    .cancel_discount
+      float: right
+      margin-top: 10px
+      
+      svg
+        fill: $secondary-text-color
+        height: 20px
+        width: 20px
+      
+.cart_empty_message
+  text-align: center
+  
+  p
+    margin: 80px 0
+    
+  svg
+    fill: $secondary-text-color
+    height: 40px
+    width: 40px
+    
+    
+//EDITS
+
+.cart_title
+  position: absolute  
+  top: 0
+  height: 50vh
+  width: 100%
+  padding: 0 2rem 0 2rem
+    
+.cart_title h1
+  position: absolute
+  bottom: 0px
+  margin: 0 0 -2rem 0!important
+  left: 0
+  padding: 0 2rem 0 2rem
+  font-size: 4rem
+  text-transform: uppercase
+  width: 100%
+  text-align: justify
+  text-align-last: justify
+
+.cart_form
+  position: absolute
+  top: 70vh
+  padding: 0 2rem 0 2rem
+  width: 100%
+  max-width: none
+  display: table
+  margin-bottom: 150px
+
+.cart_items
+  width: 100%
+  max-width: none
+  border-bottom: 1px solid black
+
+.cart_wrapper
+  border-top: 1px solid black
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr
+  grid-template-rows: 200px
+  grid-gap: 20px
+
+.cart_wrapper_titles
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr
+  grid-template-rows: 50px 
+  grid-gap: 20px
+  padding-bottom: 1rem
+
+.cart_wrapper_section
+  padding-top: 1rem
+  padding-bottom: 1rem
+  display: flex
+  justify-content: left
+  text-transform: uppercase
+
+.cart_wrapper_section a
+  color: black
+  text-transform: uppercase
+
+.cart_wrapper_section a:hover
+  text-decoration: underline
+
+.cart_wrapper_section_image img
+  max-width: 100%
+  max-height: 100%
+
+.cart_wrapper_section button
+  width: 20px
+  height: 20px
+  background-color: rgba(0, 0, 0, 0)
+
+.cart_wrapper_section button svg
+  margin-top: -20px
+
+.cart_info
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr
+  grid-template-rows: 100px 
+  grid-gap: 20px
+  max-width: none
+  padding: 0 0 0 0
+  border: none
+  
+.cart_info_section
+  padding-top: 1rem
+  padding-bottom: 1rem
+  display: flex
+  justify-content: left
+  text-transform: uppercase
+  color: black
+
+.quantity
+  width: 60px   
+  margin-top: -20px
+  text-align: center
+  background: none
+  border: none
+
+.qty svg
+  margin-top: 20px
+  line-height: 0px
+
+.qty_holder
+  margin-top: -20px
+
+.cart_info_2
+  display: grid
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr
+  grid-template-rows: 100px 
+  grid-gap: 20px
+  max-width: none
+  width: 100%
+  padding: 0 0 0 0
+  border: none
+  border-top: 1px solid black
+  
+.cart_info_2_section
+  padding-top: 1rem
+  padding-bottom: 1rem
+  display: flex
+  justify-content: left
+  text-transform: uppercase
+  color: black
+
+.checkout_btn
+  width: 100%
+  height: 20px
+  text-transform: uppercase
+  font-size: 14px
+  line-height: 0px
+  text-align: left
+  padding-left: 5px
+
+.cart_empty_message
+  width: 100%
+  position: absolute
+  top: 50vh
+  margin-top: -2rem
+  padding-left: 2rem
+  padding-right: 2rem
+
+.cart_empty_message h1
+  font-size: 4rem
+  text-transform: uppercase
+  text-align: justify
+  text-align-last: justify
+
+.cart_empty_message_shop
+  position: absolute
+  top: 75vh
+  padding: 0 2rem 0 2rem
+  width: 100%
+  margin: -3rem 0 0 0
+  text-transform: uppercase
+  text-align: justify
+  text-align-last: justify
+  font-size: 4rem
+  color: black
+
+.cart_emtpy_message_shop a
+  color: black!important
+  text-decoration-color: black
+  
+.cart_emtpy_message_shop a:hover
+  border-bottom: 5px solid black
+
+
+#cart .footer
+  position: absolute
+  bottom: 2rem!important
+  padding-bottom: 0px
+
+.full_width_text
+  text-align: justify
+  text-align-last: justify
+
+
+
+/* MEDIA SIZES */
+
+@media screen and (max-width: $break-medium)
+  .cart_title
+    height: 12rem
+    
+  .cart_form
+    top: 20rem
+    margin-bottom: 0px
+    
+  .cart_wrapper_titles
+    display: none
+    
+  .cart_item
+    justify-content: center
+    
+  .cart_wrapper
+    grid-template-columns: 1fr
+    padding: 2rem 0 2rem 0
+    
+  .cart_wrapper div, .cart_wrapper div a
+    margin: 0 auto
+    text-align: center
+    padding: 0 0 0 0
+    
+  .cart_info
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 0px
+    grid-gap: 0px
+    padding-top: 2rem
+    padding-bottom: 2rem
+
+    
+  .cart_info_section
+    padding-top: 0px
+    padding-bottom: 0px
+    
+  .cart_info_2
+    grid-template-columns: 1fr
+    grid-template-rows: 0px
+    grid-gap: 0px
+    padding-top: 2rem
+    padding-bottom: 2rem
+    
+    
+  .cart_info_2_section
+    padding-top: 0px
+    padding-bottom: 0px
+  
+  .cart_info_2 button
+    display: block
+    width: 100%
+    max-width: 100%
+    height: 4rem
+    padding-left: 2rem
+    
+  .cart_empty_message
+    top: 10rem
+
+    
+  .cart_empty_message h1, .cart_empty_message_shop
+    font-size: 0.9rem 
+    text-align: left
+    text-align-last: left
+    
+  .cart_empty_message_shop
+    height: 4rem
+    background-color: #2c2c2c
+    top: 16rem
+    padding: 1.6rem 0 0 2rem
+  
+  .cart_empty_message_shop a
+    color: #f2f2f2

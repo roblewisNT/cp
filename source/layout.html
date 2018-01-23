@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+    <!--
+	    
+	    Built by: 
+ ________   _______   ___       __                                                           
+|\   ___  \|\  ___ \ |\  \     |\  \                                                         
+\ \  \\ \  \ \   __/|\ \  \    \ \  \                                                        
+ \ \  \\ \  \ \  \_|/_\ \  \  __\ \  \                                                       
+  \ \  \\ \  \ \  \_|\ \ \  \|\__\_\  \                                                      
+   \ \__\\ \__\ \_______\ \____________\                                                     
+    \|__| \|__|\|_______|\|____________|                                                     
+ _________  _______   ________  ________  ___  _________  ________  ________      ___    ___ 
+|\___   ___|\  ___ \ |\   __  \|\   __  \|\  \|\___   ___|\   __  \|\   __  \    |\  \  /  /|
+\|___ \  \_\ \   __/|\ \  \|\  \ \  \|\  \ \  \|___ \  \_\ \  \|\  \ \  \|\  \   \ \  \/  / /
+     \ \  \ \ \  \_|/_\ \   _  _\ \   _  _\ \  \   \ \  \ \ \  \\\  \ \   _  _\   \ \    / / 
+      \ \  \ \ \  \_|\ \ \  \\  \\ \  \\  \\ \  \   \ \  \ \ \  \\\  \ \  \\  \|   \/  /  /  
+       \ \__\ \ \_______\ \__\\ _\\ \__\\ _\\ \__\   \ \__\ \ \_______\ \__\\ _\ __/  / /    
+        \|__|  \|_______|\|__|\|__|\|__|\|__|\|__|    \|__|  \|_______|\|__|\|__|\___/ /     
+                 
+   NewTerritory.Studio  
+-->
+<head>
+  <title> {{ store.name }} - {{page.name}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/graphics/cp_favicon.png"/>
+  {{ head_content }}
+  
+  <style>
+  .ui-menu { width: 150px; }
+  </style>
+ 
+</head>
+<body id="{{ page.permalink }}" class="{{ page.category }}{% if page.permalink == 'home' %}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}{% endif %}">
+  <header class="header">
+      <button class="accordion">Menu</button>
+        <div class="panel">
+          <button class="accordion">Editorials</button>
+            <div class="panel">
+              <li><a href="/editorials">All</a></li>
+              <li><a href="/drop-one">Drop One</a></li>
+<!--              <li><a href="#">Drop Two</a></li>-->
+            </div>
+          <li><a href="/products">Shop</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </div>
+<!--    <div class="main_menu">-->
+<!--
+        <nav>
+            <ul id="menu" class="header_icons_left">
+            <ul>
+                <li><h3><span class="underline_s">Menu</span></h3>
+                    <ul>
+                        <li><a href="#"><span class="underline_s">Lookbook</span></a></li>
+                        <li><a href="#"><span class="underline_s">Shop</span></a></li>
+                            <ul>
+                                <li><a href="#"><span class="underline_s">SHOP</span></a></li>
+                                <li><a href="#"><span class="underline_s">SHOP</span></a></li>
+                                <li><a href="#"><span class="underline_s">SHOP</span></a></li>
+                                <li><a href="#"><span class="underline_s">SHOP</span></a></li>
+                            </ul>
+                        <li><a href="#"><span class="underline_s">About</span></a></li>
+                        <li><a href="#"><span class="underline_s">Contact</span></a></li>     
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+-->
+<!--    </div>-->
+     
+
+
+      
+    <div class="store_name">
+        <a href="/"><img class="logo" src="https://courtneypellow.com.s3.amazonaws.com/courtneypellow/graphics/cp_logo.svg" /></a>
+    </div>
+    
+      <div class="cart_but">
+      <ul class="header_icons_right">
+        <li class="open_cart" ><a href="#"><p style="margin-top: 0px;">CART &nbsp;<span class="cart_count"><span class="cart_value">{{ cart.item_count }}</span></span></p></a></li>
+      </ul>
+          </div>
+  </header>
+    <div class="mobile-menu">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">     
+                        <polygon points="612,36.004 576.521,0.603 306,270.608 35.478,0.603 0,36.004 270.522,306.011 0,575.997 35.478,611.397      306,341.411 576.521,611.397 612,575.997 341.459,306.011    " style="fill: rgb(255, 255, 255);"></polygon>
+                 </svg>
+          </a>
+          
+          <a href="..">Home</a>
+          <a href="#">Editorials</a>
+          <a href="/products">Shop</a>
+          <a href="/cart">Cart &nbsp;{{ cart.item_count }}</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <div class="sidenav-footer">&copy; {{ 'Today' | date: '%Y' }} {{ store.name }}</div>
+        </div>
+        <div class="close-sidenav">
+            <span class="openbtn" style="font-size:30px;cursor:pointer" onclick="openNav()">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                    <path d="M0,95.625v38.25h612v-38.25H0z M0,325.125h612v-38.25H0V325.125z M0,516.375h612v-38.25H0V516.375z" style="fill: rgb(0, 0, 0);"></path>
+                </svg>
+            </span>
+            
+            
+
+            
+           
+        </div>
+    </div>
+  {% if page.permalink == 'home' %}
+    {% if theme.images.welcome_image or theme.welcome_text != blank %}
+      <div class="welcome_image">
+        <div class="welcome_overlay"></div>
+          <div class="welcome_text">
+            {% if theme.welcome_text != blank %}<h1>{{ theme.welcome_text }}</h1>{% endif %}
+            <a href="/products" class="welcome_button">Start shopping</a>
+          </div>
+      </div>
+    {% endif %}
+  {% endif %}
+  
+  
+  <!--   CUSTOM PAGES   -->
+  
+  
+  <section class="content page-{{ page.permalink }} {{ page.category }}{% if theme.images.welcome_image or theme.welcome_text != blank %} has_welcome{% endif %}">
+   
+   
+<!--   ABOUT PAGE   -->
+   
+   
+    {% if page.name == 'About' %}
+        <section class="about">
+            <div class="about__para">
+                <p>{{ page_content }}</p>
+            </div>
+            <div class="about__scroll">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Oversized%20Jacket-Camo-Front%20copy%20copy.png" alt="">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Cropped%20Jeans-OrangeCamo-Front%20copy%20copy.png" alt="">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Sock%20Jumper-Front%20copy%20copy.png" alt="">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Sock%20Long%20Johns-Front%20copy%20copy.png" alt="">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Bush%20Blanket-Pink-Front%20copy%20copy.png" alt="">
+                   <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/High%20Waisted%20Pants-Denim-Front%20copy%20copy.png" alt="">
+<!--
+                   <div class="about__contact">
+                       <div>Contact</div>
+                       <div><a href="mailto:hello@courtneypellow.com">hello@courtneypellow.com</a></div>
+                       <div>Location</div>
+                       <div>
+                           4/321
+                           <br>
+                           Karangahape Rd
+                           <br>
+                           Auckland
+                           <br>
+                           New Zealand
+                       </div>
+                   </div>
+-->
+                
+                
+                
+            </div>
+        </section>
+        
+        <!--   EDITORIALS PAGE   -->
+        
+        
+        
+        
+    {% elsif page.name == 'Editorials' %}
+        <section class="editorials">
+            <div class="editorials__links">
+               <div class="editorials_container">
+                 
+                     <h1 class="hover-trigger"><a  href="/drop-one" class="hover-animation-l">Drop One 17</a></h1>
+<!--                     <h1>17</h1>-->
+                 
+                 <img class="hover-activate" src="https://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/lookbook/DSCF2301-Edit.jpg" alt="">
+               </div>
+               
+               
+            </div>
+            </section>
+            
+            <!--   DROP ONE PAGE   -->
+        
+        
+        
+    {% elsif page.name == 'Drop One' %}
+        <section class="editorials">
+            <div class="editorials__links">
+               <div class="editorials_container">
+                 
+                     <h1 class="hover-trigger"><a  href="/drop-one">Drop One 17</a></h1>
+                 
+                 
+                 <img src="https://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/lookbook/DSCF2301-Edit.jpg" alt="">
+               </div>
+               
+               
+            </div>
+            </section>
+        
+            
+                
+                    
+                            
+    {% else %}
+      {{ page_content }}
+    {% endif %}
+  
+  
+  
+  <!--   END CUSTOM PAGES   -->
+  
+  
+  {% if page.name == 'Home' %}
+  <footer class="footer">
+      <div class="footer_grid">
+          <div>
+           <p>
+            321 Karangahape Rd
+            <br>
+            Auckland
+            <br>
+            New Zealand
+          </p>
+          </div>
+          <div>
+          <p>
+             Contact
+             <br>
+             <a href="mailto:hello@cournteypellow.com" class="hover-animation-s">hello@courtneypellow.com</a>
+          </p>
+          </div>
+          
+          <div>
+          <p>
+             Follow
+             <br>
+             <a href="#" class="hover-animation-s">Instagram</a>
+          </p>
+          </div>
+          <div>
+           <p>
+            &copy; {{ 'Today' | date: '%Y' }} {{ store.name }}
+            </p>
+            </div>
+          
+      </div>
+      {% endif %}
+   
+<!--
+    <table>
+        <tr>
+            <th>321 Karangahape Rd</th>
+            <th><a href="#">hello@courtneypellow.com</a></th>
+            <th></th>
+            <th>&copy; {{ 'Today' | date: '%Y' }} {{ store.name }}</th>
+        </tr>
+        <tr>
+            <th>Auckland</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>New Zealand</th>
+            <th><a href="#">Instagram</a></th>
+        </tr>
+        
+        
+        
+    </table>
+-->
+  </footer>
+  <div class="overlay">
+    <div class="overlay_background"></div>
+    <div class="overlay_content">
+      <svg class="close_overlay" viewBox="0 0 17 17"><path d="M17 1.4L15.6 0 8.5 7.1 1.4 0 0 1.4l7.1 7.1L0 15.6 1.4 17l7.1-7.1 7.1 7.1 1.4-1.4-7.1-7.1z"/></svg>
+      <ul class="page_list">
+        <li><a href="/products">Shop</a></li>
+        {% for page in pages.all %}
+          <li>{{ page | link_to }}</li>
+        {% endfor %}
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      {% if theme.show_search %}
+        <form action="/products" method="get" class="search_form">
+          <input type="text" name="search" id="search" placeholder="Search products...">
+        </form>
+      {% endif %}
+    </div>
+  </div>
+  
+  <a class="footer_cart" href="/cart">
+    <div class="background">
+    </div>
+    <p> Cart {{ cart.item_count }}</p>
+    
+  </a>
+  {% if page.permalink != 'cart' %}
+  <div class="mini_cart{% if cart.item_count == 0 %} empty{% endif %}">
+    <div class="triangle"></div>
+    <div class="cart_holder">
+      {% if cart.items != blank %}
+        <div class="item_holder">
+          {% for item in cart.items %}
+            <a class="cart_item" href="{{ item.product.url }}">
+              <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
+              <div class="item_info">
+                {{ item.product.name }}
+                {% unless item.product.has_default_option %}
+                  <span>{{ item.option.name }}</span>
+                {% endunless %}
+                <div class="item_price">{{ item.unit_price | money_with_sign }}</div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+        <div class="cart_footer">
+          <div class="item_subtotal">
+            Subtotal <span>{{ cart.total | money_with_sign }}</span>
+          </div>
+          <a class="button view_bag" href="/cart">View your cart</a>
+        </div>
+      {% else %}
+        <div class="regular_text">
+          Your bag is empty
+        </div>
+        <a class="button view_bag" href="/products">Start shopping</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="{{ 'api' | theme_js_url }}"></script>
+  <script src="{{ theme | theme_js_url }}"></script>
+  <script>
+  $( function() {
+    $( "#menu" ).menu();
+  } );
+  </script>
+  {% if page.full_url contains '/product/' %}
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  {% endif %}
+  
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+</script>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</body>
+
+</html>
+
+
+<!--
+<script>
+window.onscroll = () => {
+  const nav = document.querySelector('nav');
+  if(this.scrollY <= 600) nav.className = 'jsbefore'; else nav.className = 'jstest';
+};
+</script>
+-->
+
+
+
+

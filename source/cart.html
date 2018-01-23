@@ -1,0 +1,206 @@
+<div class="cart_holder">
+  {% if cart.items != blank %}
+    <div class="item_holder">
+      {% for item in cart.items %}
+        <a class="cart_item" href="{{ item.product.url }}">
+          <img class="item_image" src="{{ item.product.image | product_image_url | constrain: 240, 240 }}" alt="Image of {{ item.product.name | escape }}">
+          <div class="item_info">
+            {{ item.product.name }}
+            {% unless item.product.has_default_option %}
+              <span>{{ item.option.name }}</span>
+            {% endunless %}
+            <div class="item_price">{{ item.unit_price | money_with_sign }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="cart_footer">
+      <div class="item_subtotal">
+        Subtotal <span>{{ cart.total | money_with_sign }}</span>
+      </div>
+      <a class="button view_bag" href="/cart">View your bag</a>
+    </div>
+  {% else %}
+    <div class="full_width_text">
+      Your cart is emoty
+    </div>
+    <a class="button view_bag" href="/products">Start shopping</a>
+  {% endif %}
+</div>
+
+{% if cart.items != blank %}
+  <div class="cart_title">
+    <h1>Cart</h1>
+  </div>
+  <form method="post" action="/cart" id="cart_form" class="cart_form">
+    {% if errors != blank %}
+      <ul class="errors">
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="cart_wrapper_titles">
+      <div class="cart_wrapper_section">
+        
+      </div>
+      <div class="cart_wrapper_section">
+        Item
+      </div>
+       <div class="cart_wrapper_section">
+        Size
+      </div>
+      <div class="cart_wrapper_section">
+        Price
+      </div>
+      <div class="cart_wrapper_section">
+        Quantity
+      </div>
+    </div>
+    <div class="cart_items">
+       {% for item in cart.items %}
+        <div class="cart_item" data-cart-id="{{ item.id }}">
+             <div class="cart_wrapper">
+                  <div class="cart_wrapper_section">
+                     <div class="cart_wrapper_section_image">
+                          <a href="{{ item.product.url }}" class="item_image" title="View {{ item.product.name }}">
+                            <img src="{{ item.product.image | product_image_url }}">
+                          </a>
+                      </div>
+                  </div>
+                  <div class="cart_wrapper_section">
+                    <a href="{{ item.product.url }}">
+                      {{ item.product.name }}
+                    </a>
+                  </div>
+                  <div class="cart_wrapper_section">
+                    <a href="{{ item.product.url }}">
+                      <span>{{ item.option.name }}</span>
+                    </a>
+                  </div>
+                  <div class="cart_wrapper_section">
+                    <span class="price">{{ item.unit_price | money_with_sign }}</span>
+                  </div>
+                  <div class="cart_wrapper_section">
+                    <div class="qty_holder" data-cart-id="{{ item.id }}">
+                      <button class="qty" type="button" data-func="minus"><svg viewBox="0 0 20 20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg></button>
+                      {{ item | item_quantity_input, 'quantity', 'quantity' }}
+                      <button class="qty" type="button" data-func="plus"><svg viewBox="0 0 20 20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg></button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+       {% endfor %}
+    </div>
+    
+    <div class="cart_info">
+        <div class="cart_info_section">
+        
+        </div>
+        <div class="cart_info_section">
+        </div>
+        <div class="cart_info_section">
+            Total
+        </div>
+        <div class="cart_info_section">
+            <span>{{ cart.total | money_with_sign }}</span>
+        </div>
+        <div class="cart_info_section">
+        </div>
+    </div>
+    
+    <div class="cart_info_2">
+        <div class="cart_info_2_section">
+        </div>
+        <div class="cart_info_2_section">
+        </div>
+        <div class="cart_info_2_section">
+        </div>
+        <div class="cart_info_2_section">
+            <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+        </div>
+        <div class="cart_info_2_section">
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="cart_info">
+      {% if cart.shipping.enabled %}
+        <div class="cart_shipping">
+          <div class="select">
+            {{ store.country | country_select }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+          </div>
+        </div>
+      {% endif %}
+      {% if cart.discount.enabled %}
+        <div class="cart_discounts">
+          {% if cart.discount.pending %}
+            <input autocomplete="off" id="cart_discount_code" name="cart[discount_code]" type="text" placeholder="Enter discount"{% if cart.discount.code %} value="{{ cart.discount.code }}"{% endif %}>
+          {% else %}
+            {% if cart.discount.free_shipping %}
+              Free shipping discount!
+            {% else %}
+              {{ cart.discount.name }}
+            {% endif %}
+            <a href="#" class="cancel_discount"><svg class="cancel_discount" viewBox="0 0 20 20"><path d="M15 6.4L13.6 5 10 8.6 6.4 5 5 6.4 8.6 10 5 13.6 6.4 15l3.6-3.6 3.6 3.6 1.4-1.4-3.6-3.6z"/></svg></a>
+          {% endif %}
+        </div>
+      {% endif %}
+        
+        
+      {% if cart.shipping.enabled or cart.discount.enabled %}
+        {% if cart.shipping.enabled %}
+          <h4 class="cart_shipping_amount">
+            Shipping:
+            {% if cart.shipping.pending %}
+              {% if cart.country %}
+                <span class="small_message">Select another country</span>
+              {% else %}
+                <span class="small_message">Select country</span>
+              {% endif %}
+            {% else %}
+              <span>{{ cart.shipping.amount | money_with_sign }}</span>
+            {% endif %}
+          </h4>
+        {% endif %}
+        {% if cart.discount.enabled %}
+          {% if cart.discount.pending %}
+          {% elsif cart.discount.free_shipping %}
+            <h4 class="cart_discount_amount">Discount: <span class="small_message">Free shipping</span></h4>
+          {% else %}
+            <h4 class="cart_discount_amount">Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      <h3>Total  <span>{{ cart.total | money_with_sign }}</span></h3>
+      <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+      <a class="button continue_shopping" href="/products">Continue shopping</a>
+    </div>
+    
+    
+    
+    
+    
+  </form>
+<!--
+  <div class="cart_empty_message" style="display: none;">
+   <h1>Your cart is empty</h1>
+  <div class="cart_empty_message_shop">
+    <a href="/products">Start shopping</a>
+  </div>
+  </div>
+-->
+{% else %}
+  <div class="cart_empty_message">
+      <h1>Your cart is empty</h1>
+  </div>
+  <div class="cart_empty_message_shop">
+    <a href="/products" class="hover-animation-l">Start shopping</a>
+  </div>
+{% endif %}
+
+

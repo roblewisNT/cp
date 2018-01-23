@@ -1,0 +1,78 @@
+{% if product.previous_product or product.next_product %}
+  <ul class="previous_next">
+    {% if product.previous_product %}
+      <li class="previous_product"><a href="{{ product.previous_product.url }}" title="View Previous Product"><svg viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg> <span>Previous</span></a></li>
+    {% endif %}
+    {% if product.next_product %}
+      <li class="next_product"><a href="{{ product.next_product.url }}" title="View Next Product"><span>Next</span> <svg viewBox="0 0 20 20"><path class="st0" d="M10 14.5L3 6.8l1.4-1.3 5.6 6.1 5.6-6.1L17 6.8"/></svg></a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+<div class="product_header"> 
+        <img src="{{ product.image | product_image_url | constrain: 1200 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
+</div>
+<div class="product_title"> 
+  <h1>{{ product.name }}</h1>
+</div>
+
+<div class="product_body">
+
+    <div class="product_images">
+      <img src="{{ product.image | product_image_url | constrain: 1200 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
+      {% if product.images.size > 1 %}
+        <ul class="product_thumbnails">
+          {% for image in product.images %}
+            <li{% if forloop.index == 1 %} class="active"{% endif %}><a href="{{ image | product_image_url | constrain: 1200 }}"><img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}"></a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="product_detail">
+        <div class="product_detail-title">
+      <h1>{{ product.name }}</h1>
+
+      <h2>
+        <span class="product_price">{{ product.default_price | money_with_sign }}</span>
+            {% case product.status %}
+                {% when 'active' %}
+                    {% if product.on_sale %}<span class="small_status {{ product.css_class }}">- On sale</span>{% endif %}
+                {% when 'sold-out' %}
+                    <span class="small_status {{ product.css_class }}">- Sold out</span>
+                {% when 'coming-soon' %}
+                    <span class="small_status {{ product.css_class }}">- Coming soon</span>
+            {% endcase %}
+      </h2>
+      
+      </div>
+        {% if product.status == 'active' %}
+        <form method="post" action="/cart" class="product_form">
+          {% if product.has_default_option %}
+            {{ product.option | hidden_option_input }}
+          {% else %}
+            <div class="select">
+              <select id="option" name="[cart][add][id]">
+                {% for option in product.options %}
+                  <option value="{{ option.id }}" data-option-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled"{% endif %}>{{ option.name }}  {{ option.price | money_with_sign }} {% if option.sold_out %}(Sold out){% endif %}</option>
+                {% endfor %}
+              </select>
+              <p class="select_arrow">&darr;</p>
+    <!--          <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>-->
+            </div>
+          {% endif %}
+          <input autocomplete="off" type="text" value="1" id="quantity">
+          <button class="button add-to-cart" type="submit" data-added-text="Added!" data-adding-text="Adding...">
+            <span class="status_text">Add to cart</span>
+          </button>
+        </form>
+        {% endif %}
+
+        <div class="product_description">
+            {% if product.description != blank %}
+                {{ product.description | paragraphs }}
+            {% endif %}
+        </div>
+  
+</div>
+</div>
