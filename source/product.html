@@ -9,24 +9,27 @@
   </ul>
 {% endif %}
 
-<div class="product_header"> 
-        <img src="{{ product.image | product_image_url | constrain: 1200 }}" alt="Image of {{ product.name | escape }}" class="primary_image">
-</div>
 <div class="product_title"> 
   <h1>{{ product.name }}</h1>
 </div>
 
-<div class="product_body">
+<div class="product_body grid">
 
     <div class="product_images">
 <!--      <img src="{{ product.image | product_image_url | constrain: 1200 }}" alt="Image of {{ product.name | escape }}" class="primary_image">-->
       
       {% if product.images.size > 1 %}
-        <div class="product_images_sub">
+        <div class="product_images_sub grid">
           {% for image in product.images %}
             <img src="{{ image | product_image_url | constrain 500}}" alt="Image of {{ product.name | escape }}">
           {% endfor %}
-        <div class="product_detail product_detail_destkop">
+        
+        
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="product_detail product_detail_destkop">
       <div class="sticky-container">
        
         <div class="product_detail-title">
@@ -74,10 +77,6 @@
   
   </div>
    
-    </div>
-        
-        </div>
-      {% endif %}
     </div>
     
     <div class="product_detail product_detail_mobile">
@@ -132,7 +131,7 @@
 
     
     <div class="return">
-        <a href="#">
+        <a href="/products">
             <h1>Back to shop</h1>
         </a>
         {% if categories.active != blank %}
