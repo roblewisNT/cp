@@ -959,6 +959,10 @@ footer.footer
 .panel
   display: none
   margin-bottom: 0.9rem
+  -webkit-animation: fadein 0.6s
+  -moz-animation: fadein 0.6s
+  -o-animation: fadein 0.6s
+  animation: fadein 0.6s
     
 .accordian
   grid-row: 1/2
@@ -1394,12 +1398,12 @@ t.cart_footer
 
 .sidenav
   height: 100%
-  width: 0
+  width: 100vw
   position: fixed
   z-index: 150
   top: 0
-  left: 0
-  background-color: #2C2C2C
+  left: -100vw
+  background-color: #0c0c0c
   overflow-x: hidden
   transition: 0.5s
   padding-top: 4rem
@@ -1414,10 +1418,10 @@ t.cart_footer
   color: #F2F2F2
   display: block
   transition: 0.3s
+  overflow: hidden
 
 .sidenav a:nth-child(2)
-  padding-top: 2rem
-  border-top: 1px solid #F2F2F2
+  padding-top: 4rem
 
 .sidenav a:hover 
   color: #f1f1f1
@@ -1425,7 +1429,7 @@ t.cart_footer
 
 .sidenav .closebtn 
   position: absolute
-  top: 9px
+  top: 2rem
   right: 2rem
 
 .sidenav-footer
@@ -1438,16 +1442,14 @@ t.cart_footer
   overflow: hidden
 
 .close-sidenav
-  background-color: #F2F2F2
   position: fixed
   height: 4rem
   width: 100%
   top: 0
   z-index: 125
-  border-bottom: 1px solid black
   
 .openbtn svg
-  margin-top: 15px
+  margin-top: 2rem
   margin-left: 2rem
 
 
@@ -1456,16 +1458,15 @@ t.cart_footer
 
 .footer_cart
   height: 4rem
-  background: #f2f2f2
-  border-top: 1px solid black
+  background: #0C0C0C
   z-index: 125
 
 .footer_cart .background
-  background: #f2f2f2
+  background: #0C0C0C
   
 .footer_cart p
   position: inherit
-  color: #2c2c2c
+  color: #F2F2F2
   text-transform: uppercase
   left: 2rem
   font-size: 0.9rem
