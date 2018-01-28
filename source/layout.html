@@ -137,8 +137,13 @@
    
     {% if page.name == 'About' %}
         <section class="about">
-            <div class="about__para">
-                <p>{{ page_content }}</p>
+            <div class="about__para__outer">
+                <div class="about__para__middle">
+                    <div class="about__para__inner text-l">
+                        <p>{{ page_content }}</p>
+                    </div>
+
+                </div>
             </div>
             <div class="about__scroll">
                    <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Oversized%20Jacket-Camo-Front%20copy%20copy.png" alt="">
@@ -147,26 +152,8 @@
                    <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Sock%20Long%20Johns-Front%20copy%20copy.png" alt="">
                    <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/Bush%20Blanket-Pink-Front%20copy%20copy.png" alt="">
                    <img src="http://courtneypellow.com.s3.amazonaws.com/courtneypellow/images/about%20(downsized)/High%20Waisted%20Pants-Denim-Front%20copy%20copy.png" alt="">
-<!--
-                   <div class="about__contact">
-                       <div>Contact</div>
-                       <div><a href="mailto:hello@courtneypellow.com">hello@courtneypellow.com</a></div>
-                       <div>Location</div>
-                       <div>
-                           4/321
-                           <br>
-                           Karangahape Rd
-                           <br>
-                           Auckland
-                           <br>
-                           New Zealand
-                       </div>
-                   </div>
--->
-                
-                
-                
-            </div>
+            </div> 
+
         </section>
         
         <!--   EDITORIALS PAGE   -->
